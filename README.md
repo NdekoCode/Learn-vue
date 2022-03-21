@@ -67,3 +67,5 @@ Parmis ces `Hooks` il y en a qui sont utiliser plus que d'autres comme:
 
 ### Manipulations des données et des Hooks
 
+Sachez d'abord que avec `VueJS3` toutes les `console.log` de nos données retourne un `Proxy`, les données sont reactifs càd si il y a un changement dans le code, le DOM et tous les appels de la donnée qui a été modifier
+vont etre modifier eux aussi
