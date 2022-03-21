@@ -1,9 +1,10 @@
-const app = Vue.createApp({
-  data(){
+const rootComponent = {
+  data () {
     return {
-      firstname:"Arick"
+      firstname:'Arick'
     }
-
-  }
-}).mount('#app');
+  },
+  methods: {}
+}
+const app = Vue.createApp(rootComponent).mount('#app');
 console.log(app);
