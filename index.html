@@ -1,23 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="./tailwind.js"></script>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="./assets/css/bootstrap.min.css" rel="stylesheet" />
     <title>Apprendre vuejs3 avec antoine</title>
-</head>
-<body>
-    <div id="app">
-        <h1 class="text-3xl font-bold mb-3">Apprendre VueJS3</h1>
-    
-        <div>
-            <p>{{ getFirstName }}</p>
-            <p>{{ posts }}</p>
+  </head>
 
+  <body>
+    <div id="root">
+      <div class="container mt-5">
+        <a :href="link+'/tutoriel'">{{ guide }}</a>
+        <div class="my-3">
+          <input type="text" v-model="message" class="form-control" />
         </div>
+        <p>{{ message }}</p>
+        <div class="my-3">
+          <input
+            type="checkbox"
+            v-model="cls"
+            :true-value="'alert-success'"
+            :false-value="'alert-danger'"
+            class="form-check-input"
+          />
+        </div>
+        <div :class="`alert alert-dismissible fade show ${cls}`" role="alert">
+          <strong>Holy Guy!</strong> {{ alert }}
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="alert"
+            aria-label="Close"
+            v-on:click="close"
+          ></button>
+        </div>
+        <ul class="mt-5 list-group">
+          <li
+            class="list-group-item"
+            v-for="person in persons"
+            @click="getValue(person)"
+          >
+            {{ person }}
+          </li>
+        </ul>
+      </div>
     </div>
-    <script src="./vue.global.js"></script>
-    <script src="./app.js"></script>
-</body>
+    <script src="./assets/js/vue.js"></script>
+    <script src="./assets/js/app.js"></script>
+  </body>
 </html>

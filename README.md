@@ -69,3 +69,28 @@ Parmis ces `Hooks` il y en a qui sont utiliser plus que d'autres comme:
 
 Sachez d'abord que avec `VueJS3` toutes les `console.log` de nos données retourne un `Proxy`, les données sont reactifs càd si il y a un changement dans le code, le DOM et tous les appels de la donnée qui a été modifier
 vont etre modifier eux aussi
+
+## Quelques trucs et astuces
+
+Si on a une proprieter et son `v-bind` il aura une fusion de proprieter à la fin
+
+### Les formulaires
+
+- Pour lier un etat à un champs de formulaire on utilise `v-model` par exemple `<input type="text" v-model="message" class="form-control" />` ici on dit que ce champ input sera lier à la valeur de l'etat message et donc la modification de ce champ va automatiquement induire la modification de l'etat message
+- Pour les checkbox on peut utiliser quelques proprieter de `vuejs` quand sur ce checkbox on veut faire des assignation de l'etat d'une maniere dynamic avec les `v-model` comme `:true-value='une valeur quelconque'` cette proprieter s'utilise surtout quand le le checkbox est cocher ou que sa valeur vaut `true` et on a aussi `:false-value` qui s'utilise quand le checkbox est decocher ou sa valeur vaut `false` et donc: `<input type="checkbox" v-model="cls" :true-value="'success'" :false-value="'error'" />`, ici on dit que si le `checkbox` est cocher alors la variable `cls` on va lui assigneer la valeur `success` et s'il ne pas cocher on va lui assigner la valeur `error`
+
+### Animation
+
+Il est possible de créer des animation avec vuejs lorsqu'on a un changement de status, càd quand un element du dom passe du cacher au visible ou du visible au cacher,...
+
+### Differences entre v-if et v-show
+
+- `v-if` : Si la condition n'est pas bonne il supprime l'element du DOM
+- `v-show` : Si la condition n'est pas bonne il met l'element en `display:none`
+
+## Guide pour Vue 3
+
+- Les evenement avec vue3
+- v-bind avec vue3
+- Les etats ou les datas ou encore les variable avec vue3
+- Les methodes avec vue3
