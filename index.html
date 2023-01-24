@@ -4,46 +4,13 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="./assets/css/bootstrap.min.css" rel="stylesheet" />
-    <title>Apprendre vuejs3 avec antoine</title>
+    <link rel="stylesheet" href="./assets/css/bootstrap.min.css" />
+    <title>LifeCycle and more</title>
   </head>
-
   <body>
-    <div id="root">
+    <div id="app">
       <div class="container mt-5">
-        <a :href="link+'/tutoriel'">{{ guide }}</a>
-        <div class="my-3">
-          <input type="text" v-model="message" class="form-control" />
-        </div>
-        <p>{{ message }}</p>
-        <div class="my-3">
-          <input
-            type="checkbox"
-            v-model="cls"
-            :true-value="'alert-success'"
-            :false-value="'alert-danger'"
-            class="form-check-input"
-          />
-        </div>
-        <div :class="`alert alert-dismissible fade show ${cls}`" role="alert">
-          <strong>Holy Guy!</strong> {{ alert }}
-          <button
-            type="button"
-            class="btn-close"
-            data-bs-dismiss="alert"
-            aria-label="Close"
-            v-on:click="close"
-          ></button>
-        </div>
-        <ul class="mt-5 list-group">
-          <li
-            class="list-group-item"
-            v-for="person in persons"
-            @click="getValue(person)"
-          >
-            {{ person }}
-          </li>
-        </ul>
+        <button class="button">{{ count }}</button>
       </div>
     </div>
     <script src="./assets/js/vue.js"></script>

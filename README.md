@@ -72,7 +72,12 @@ vont etre modifier eux aussi
 
 ## Quelques trucs et astuces
 
-Si on a une proprieter et son `v-bind` il aura une fusion de proprieter à la fin
+### General
+
+- Si on a une proprieter et son `v-bind` il aura une fusion de proprieter à la fin
+- On ne peut pas ajouter dynamiquement des nouvelles propriéter à un objet et one ne peut pas modifier un element de tableau directement par son index, il faudra utiliser des methodes deriver telle que le `Object.assign`
+- Globalement si vous voulez greffer un comportement particulier sur vos composant, sachez que dans le cycle de vie il y a deux evenement qui vont etre clé `mounted` et `destroy` mais si vous voulez recuperer les données depuis une API pour les inserer dans votre composant, vous pouvez utiliser l'evenement `beforeMounted` pour recuperer les elements puis ensuites les inserer dans votre DOM.
+- Dans vue js une variable qui commmence par `$` est une convention pour faire la difference entre les proprieter qui sont des etats et donc appartient à `data` et des proprieter qui servent juste à la logique du code comme la proprieter `$el` pour recuperer l'element, `$data` pour recuperer les etats mais on peut aussi en créer dynamiquement ce qui faira en sorte que notre variable soit globale dans toute notre application, mais faire cela c'est une mauvais pratique car si on veut rendre quelques choses globale, vaut mieux utiliser le systeme de `store`
 
 ### Les formulaires
 

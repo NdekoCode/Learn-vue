@@ -1,26 +1,16 @@
-new Vue({
-  el: "#root",
+const vm = new Vue({
+  el: "#app",
   data() {
     return {
-      message: "Bonjour",
-      cls: "alert-success",
-      guide: "Aller sur ce site",
-      link: "https://www.grafikart.fr",
-      success: true,
-      persons: ["Marion", "Jean", "Patrick", "Gloire", "Lionge"],
-      alert: "Bravo votre enregistrement a marcher",
+      count: 0,
+      timer: null,
     };
   },
-  methods: {
-    close() {
-      this.success = !this.success;
-      this.message = this.success ? "Ouvert" : "Fermer";
-      this.alert = this.success
-        ? "Bravo votre enregistrement a marcher"
-        : "Votre enregistrement a echouer";
-    },
-    getValue(value) {
-      this.message = value;
-    },
+  mounted() {
+    console.log("Time");
+    this.timer = setInterval(() => this.count++, 1000);
+  },
+  destroyed() {
+    clearInterval(this.timer);
   },
 });
