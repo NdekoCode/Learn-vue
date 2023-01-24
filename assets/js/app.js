@@ -4,7 +4,15 @@ const vm = new Vue({
     return {
       count: 0,
       timer: null,
+      success: false,
+      message: "It god",
     };
+  },
+  computed: {
+    cls() {
+      console.log("Called");
+      return this.success ? "alert-success" : "alert-danger";
+    },
   },
   mounted() {
     console.log("Time");

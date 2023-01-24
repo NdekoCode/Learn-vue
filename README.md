@@ -75,9 +75,10 @@ vont etre modifier eux aussi
 ### General
 
 - Si on a une proprieter et son `v-bind` il aura une fusion de proprieter à la fin
-- On ne peut pas ajouter dynamiquement des nouvelles propriéter à un objet et one ne peut pas modifier un element de tableau directement par son index, il faudra utiliser des methodes deriver telle que le `Object.assign`
+- On ne peut pas ajouter dynamiquement des nouvelles propriéter à un objet et one ne peut pas modifier un element de tableau directement par son index, il faudra utiliser des methodes deriver telle que le `Object.assign`.
 - Globalement si vous voulez greffer un comportement particulier sur vos composant, sachez que dans le cycle de vie il y a deux evenement qui vont etre clé `mounted` et `destroy` mais si vous voulez recuperer les données depuis une API pour les inserer dans votre composant, vous pouvez utiliser l'evenement `beforeMounted` pour recuperer les elements puis ensuites les inserer dans votre DOM.
 - Dans vue js une variable qui commmence par `$` est une convention pour faire la difference entre les proprieter qui sont des etats et donc appartient à `data` et des proprieter qui servent juste à la logique du code comme la proprieter `$el` pour recuperer l'element, `$data` pour recuperer les etats mais on peut aussi en créer dynamiquement ce qui faira en sorte que notre variable soit globale dans toute notre application, mais faire cela c'est une mauvais pratique car si on veut rendre quelques choses globale, vaut mieux utiliser le systeme de `store`
+- Quand on modifie une variable de data, les fonctions dans `methods` sont reappeler à chaque fois car vuejs n'a pas un moyen de savoir qu'elle est la fonction qui modifie la proprieter, et cela souvent nuit en terme de performace donc si la fonction vous retourne un resulat que vous utiliser ensuite dans le DOM, privilegier plutot l'utilisation des `computed`(qui sont des fonctions qui s'utilisent sous forme des proprietés) car la proprieter `computed` va appeler sa function uniquement si le l'etat auquel il est lié est modifier, mais si vous voulez juste observer quand une variable de l'etat est modifier, utiliser alors les watchers. `computed` mais en cache les valeurs et il ne faira la modification que lorsque une variable qui a été utiliser à l'interieur à ete modifier et cela permet d'obtimiser les performances
 
 ### Les formulaires
 
@@ -99,3 +100,4 @@ Il est possible de créer des animation avec vuejs lorsqu'on a un changement de 
 - v-bind avec vue3
 - Les etats ou les datas ou encore les variable avec vue3
 - Les methodes avec vue3
+- Les computed et watcher avec vue3
