@@ -9,22 +9,17 @@ const vm = new Vue({
       user: {
         firstName: "Gloire",
         lastName: "Mutaliko",
+        fullname: "",
       },
     };
   },
-  computed: {
-    fullname: {
-      get: function () {
-        return this.user.firstName + " " + this.user.lastName;
-      },
-      set: function (value) {
-        const parts = value.split(" ");
-        this.user.firstName = parts[0];
-        this.user.lastName = parts[1];
-      },
+  watch: {
+    success: function (value) {
+      console.log("success is modify", value);
     },
+  },
+  computed: {
     cls() {
-      console.log("Called");
       return this.success ? "alert-success" : "alert-danger";
     },
   },

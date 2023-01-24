@@ -24,9 +24,9 @@
         <div class="mb-3">
           Prénom: {{ user.firstName }}<br />
           Post-nom: {{ user.lastName }}<br />
-          Nom complet: {{ fullname }}
+          Nom complet: {{ user.fullname }}
           <div class="my-3">
-            <input type="text" v-model="fullname" />
+            <input type="text" v-model="user.fullname" />
           </div>
         </div>
       </div>
