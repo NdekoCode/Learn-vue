@@ -21,6 +21,14 @@
           </div>
           <div :class="`alert  ${cls}`">Apprendre</div>
         </div>
+        <div class="mb-3">
+          Prénom: {{ user.firstName }}<br />
+          Post-nom: {{ user.lastName }}<br />
+          Nom complet: {{ fullname }}
+          <div class="my-3">
+            <input type="text" v-model="fullname" />
+          </div>
+        </div>
       </div>
     </div>
     <script src="./assets/js/vue.js"></script>
