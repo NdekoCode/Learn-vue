@@ -70,6 +70,33 @@ Parmis ces `Hooks` il y en a qui sont utiliser plus que d'autres comme:
 Sachez d'abord que avec `VueJS3` toutes les `console.log` de nos données retourne un `Proxy`, les données sont reactifs càd si il y a un changement dans le code, le DOM et tous les appels de la donnée qui a été modifier
 vont etre modifier eux aussi
 
+## Les directives
+
+En vuejs on a plusieurs directives dont notamment `v-if`,`v-for`,`v-model`,`v-show`,... mais à par cela on peut créer nos propres directives, et cela permet de rajouter des fonctionnalités particuliere et personnelle.
+Pour créer une directive de manière globale on utilise la methode `directive` sur l'Object `Vue` et cette methode prend 2 argument, le nom de la directive qu'on veut créer et ensuite un objet contenant les paramètres de cette directives, cet objet contenant les directive prend à son tour des clé comme:
+
+- bind: Qui est une fonction qui sera appeler lorsque cette directive sera ajouter sur un element du DOM, cette fonction `bind` prend 3 argument
+  - L'element sur lequel on a binder notre systeme (notre directive)(`el`)
+  - Le `binding`, c'est ce qui nous permet de recuperer les differents `modifier` present sur notre directive
+  - Le virtual node `vnode`, c'est un truc créer par vuejs et il faut vraiment en avoir besoin pour l'utiliser.
+
+```{Vue.js}
+Vue.directive("salut", {
+  bind(el, binding, vnode) {
+    // el.value = binding.value;
+    console.log(el, binding);
+  },
+  update: (el, binding, vnode, oldVnode) => {
+    console.log("Update");
+  },
+});
+```
+
+- update: Permet de detecter lorsque quelque chose à été ajouter sur cet element
+
+- L'element sur leaue
+ `Vue.directive('LeNomDelaDirective',)`
+
 ## Quelques trucs et astuces
 
 ### General
@@ -117,3 +144,4 @@ Il est possible de créer des animation avec vuejs lorsqu'on a un changement de 
 - Les methodes avec vue3
 - Les computed et watcher avec vue3
 - Les modifier en vue3
+- Les filtres en Vue3

@@ -1,3 +1,11 @@
+Vue.directive("salut", {
+  bind(el, binding, vnode) {
+    // el.value = binding.value;
+    console.log(el, binding);
+  },
+});
+Vue.filter("capitalize", (value) => value.toUpperCase());
+Vue.filter("reverse", (value) => value.split("").reverse().join(""));
 const vm = new Vue({
   el: "#app",
   data() {
@@ -37,7 +45,7 @@ const vm = new Vue({
         this.user.lastName = userValue[1] || this.user.lastName;
       },
       get() {
-        return this.user.fullname;
+        return `${this.user.firstName} ${this.user.lastName}`;
       },
     },
     cls() {
