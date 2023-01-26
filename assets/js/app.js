@@ -6,12 +6,22 @@ const vm = new Vue({
       timer: null,
       success: false,
       message: "It god",
+      guide: "Go to grafikart",
       user: {
         firstName: "Gloire",
         lastName: "Mutaliko",
         fullname: "",
       },
+      link: "https://www.grafikart.fr",
     };
+  },
+  methods: {
+    demo() {
+      console.log("Demo");
+    },
+    demo2() {
+      console.log("Demo 2");
+    },
   },
   watch: {
     success: function (value) {

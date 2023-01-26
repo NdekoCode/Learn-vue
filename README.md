@@ -86,6 +86,20 @@ vont etre modifier eux aussi
 - Pour lier un etat à un champs de formulaire on utilise `v-model` par exemple `<input type="text" v-model="message" class="form-control" />` ici on dit que ce champ input sera lier à la valeur de l'etat message et donc la modification de ce champ va automatiquement induire la modification de l'etat message
 - Pour les checkbox on peut utiliser quelques proprieter de `vuejs` quand sur ce checkbox on veut faire des assignation de l'etat d'une maniere dynamic avec les `v-model` comme `:true-value='une valeur quelconque'` cette proprieter s'utilise surtout quand le le checkbox est cocher ou que sa valeur vaut `true` et on a aussi `:false-value` qui s'utilise quand le checkbox est decocher ou sa valeur vaut `false` et donc: `<input type="checkbox" v-model="cls" :true-value="'success'" :false-value="'error'" />`, ici on dit que si le `checkbox` est cocher alors la variable `cls` on va lui assigneer la valeur `success` et s'il ne pas cocher on va lui assigner la valeur `error`
 
+### Les modifiers
+
+Dans vuejs lors de l'utilisation des evenement on peux utiliser quelques modifier pour faire quelques actions particulier. ces modifier s'utilisent directement sur l'evenement dans la partie HTML avec un point `.` suivis de du nom du modifier, et parmis eux on a :
+
+- **`prevent`**: s'utilise pour faire un `preventDefault` sur un element pour eviter un comportement par defaut de cet element, par exemple `<a href="https://www.ndekocode.com" @click.prevent="funcToCall">Aller sur ce site </a>`,
+- **`stop`**: S'utilise pour faire un `stopPropagation`, et cela va permettre d'eviter que l'evenement fasse des bulles vers le haut c-à-d d'eviter que l'evenement sur un element remote vers les elements parent, par exemple `<p @click="funcToP"><a href="https://www.ndekocode.com" @click.stop="funcToCall">Aller sur ce site </a></p>`, en faisant un `@click.prevent` on evite que l'evenement du paragraphe soit declencher quand on va cliquer sur le lien, ainsi l'evenement du lien ne va pas remonter vers le paragraphe.
+- **`self`**:Est un peu similaire à `stop` à la seule difference est que lui permet de dire que il faut que l'evenement soit detecter uniquement sur cet element là et pas par exemple sur un element enfant.
+- **`lazy`**: qui s'utilise souvent sur les evenement type formulaire et de redimensionnement , et cela permet de faire de la performance de notre application, c'est vraiment très interessant pour eviter d'avoir trop d'evenement qui sont lancer sur un element ou sur un formulaire en particulier
+- **`number`** : S'utilise sur un champ de formulaire et permet de convertir tous ce qui est entrer en nombre.
+- **`trim`** : S'utilise aussi sur un champ de formulaire et permet d'enlever les espaces de trop et les saut à la ligne
+  
+**NB**: `lazy`,`number`,`trim`, lorsqu'elle sont utiliser sur un element de formulaire, elle sont appliquer sur un `v-model` c-à-d `v-model.lazy`,`v-model.number`,`v-model.trim`.
+Avec certain evenement particulier notamment `@keyup` on peut peut lui appliquer quelques modifier particulier pour faire un raccourcie des choses que l'on veut faire par exemple `@keyup.enter` pour detecter quand on clique sur la touche "Enter" et `@keyup.space` pour detecter quand on clique sur la touche "Espace", cela est très pratique pour eviter d'avoir des test de Key code à faire au niveau de notre code.
+
 ### Animation
 
 Il est possible de créer des animation avec vuejs lorsqu'on a un changement de status, càd quand un element du dom passe du cacher au visible ou du visible au cacher,...
@@ -102,3 +116,4 @@ Il est possible de créer des animation avec vuejs lorsqu'on a un changement de 
 - Les etats ou les datas ou encore les variable avec vue3
 - Les methodes avec vue3
 - Les computed et watcher avec vue3
+- Les modifier en vue3
