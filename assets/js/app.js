@@ -29,6 +29,17 @@ const vm = new Vue({
     },
   },
   computed: {
+    fullname: {
+      set(value) {
+        const userValue = value.split(" ");
+        this.user.fullname = value;
+        this.user.firstName = userValue[0] || this.user.firstName;
+        this.user.lastName = userValue[1] || this.user.lastName;
+      },
+      get() {
+        return this.user.fullname;
+      },
+    },
     cls() {
       return this.success ? "alert-success" : "alert-danger";
     },
