@@ -97,6 +97,24 @@ Vue.directive("salut", {
 - L'element sur leaue
  `Vue.directive('LeNomDelaDirective',)`
 
+## Les composants
+
+Les composants nous permettent de morceler notre code en plusieurs petits morceau réutilisable.
+En utilisant vuejs en CDN on peut créer un composant de deux manière:
+
+- De manière global
+- De maniere local à un element donner ou à un composant données
+
+Une fois un composant créer il peut etre constitué de differentes choses, comme
+
+- des propriétés: Sont des données venant de l'exterieur comme des argument qu'on passe à une fonction pour son execution
+- Des methodes utiliser dans le composant
+- Ainsi que d'autres choses utiliser lors de la definition d'une instance Vuejs comme les proprieter computed, les watchers, les filters, les directives,...
+
+### Créer un composant de manière global
+
+Pour créer un composant de manière global on utilise l'Object `Vue` avec `Vue.component()` cette methode component prend deux arguments dont le nom du composant et ensuite un objet contenant les paramètres du composant comme `template` qui va contenir la description HTML du composant, `data` qui va contenir les etats composants,`props` qui va contenir `methods` aura les methodes present dans le composant,...
+
 ## Quelques trucs et astuces
 
 ### General
@@ -145,3 +163,4 @@ Il est possible de créer des animation avec vuejs lorsqu'on a un changement de 
 - Les computed et watcher avec vue3
 - Les modifier en vue3
 - Les filtres en Vue3
+- Comment créer un composant de manière globale avec Vuejs 3
