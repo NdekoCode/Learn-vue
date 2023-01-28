@@ -12,9 +12,11 @@ const message = {
   template: /* html */ `
   <div :class="cls">
   
+  <slot name="footer"></slot>
   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" @click="close"></button>
     <div className="header">{{header}}</div>
   {{ message }}
+  <slot name="header"></slot>
   </div>`,
   methods: {
     close() {

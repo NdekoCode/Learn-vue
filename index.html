@@ -16,7 +16,16 @@
           cls="alert alert-success"
           :message="message"
           v-if="alert"
-        ></message>
+        >
+          <div slot="footer" class="card">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae,
+            enim! Eligend
+          </div>
+          <div slot="header" class="card-headr">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores,
+            quo?
+          </div>
+        </message>
         <compter></compter>
         <compter :start="4" :step="5"></compter>
         <div class="mb-3">

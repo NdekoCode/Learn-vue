@@ -212,6 +212,10 @@ Il est possible de créer des animation avec vuejs lorsqu'on a un changement de 
 - `v-if` : Si la condition n'est pas bonne il supprime l'element du DOM
 - `v-show` : Si la condition n'est pas bonne il met l'element en `display:none`
 
+### Verité sur le slot
+
+⚠️ Les slots sont executer au moment où ils sont ecrit, donc les changement des etats ne les affectent pas
+
 ## Guide pour Vue 3
 
 - Les evenement avec vue3
