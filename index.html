@@ -10,6 +10,7 @@
   <body>
     <div id="app">
       <div class="container mt-5">
+        <div class="point-container"></div>
         <message
           @close="hideAlert"
           cls="alert alert-success"
@@ -27,6 +28,9 @@
             Alerter
           </button>
         </div>
+        <form-user v-model="user"></form-user>
+
+        <div>{{ user.firstName }} {{ user.lastName }}</div>
       </div>
     </div>
     <script src="./assets/js/vue.js"></script>

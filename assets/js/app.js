@@ -52,17 +52,53 @@ const compter = {
     this.count = this.start;
   },
 };
+const formUser = {
+  props: {
+    value: {
+      type: Object,
+    },
+  },
+  data() {
+    return {
+      user: { ...this.value },
+    };
+  },
+  methods: {
+    submitForm() {
+      this.$emit("input", this.user);
+    },
+  },
+  template: /*html */ `<form action="" @submit.prevent="submitForm">
+  <div class="mb-3">
+    <input type="text" class="form-control" placeholder="Votre Prenom"  v-model="user.firstName"/>
+  </div>
+  <div class="mb-3">
+    <input type="text" class="form-control" placeholder="Votre Nom"  v-model="user.lastName"/>
+  </div>
+  <button class="btn btn-success">Valider</button>
+  <div>
+  {{ user }}
+  </div>
+  </form>
+  `,
+};
 let vm = new Vue({
   el: "#app",
   data() {
     return {
       message: "Salut guy",
       alert: false,
+      user: {
+        firstName: "Gloire",
+        lastName: "Mutaliko",
+      },
     };
   },
+
   components: {
     compter,
     message,
+    formUser,
   },
   methods: {
     showAlert() {
@@ -70,6 +106,10 @@ let vm = new Vue({
     },
     hideAlert() {
       this.alert = false;
+    },
+    getData(data) {
+      console.log(data);
+      this.user = data;
     },
   },
 });
