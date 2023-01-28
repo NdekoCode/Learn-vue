@@ -100,6 +100,7 @@ Vue.directive("salut", {
 ## Les composants
 
 Les composants nous permettent de morceler notre code en plusieurs petits morceau réutilisable.
+Le principe c'est de créer nos propres element qui vont englober leurs propres logique et leurs propres fonctionnement.
 En utilisant vuejs en CDN on peut créer un composant de deux manière:
 
 - De manière global
@@ -114,6 +115,63 @@ Une fois un composant créer il peut etre constitué de differentes choses, comm
 ### Créer un composant de manière global
 
 Pour créer un composant de manière global on utilise l'Object `Vue` avec `Vue.component()` cette methode component prend deux arguments dont le nom du composant et ensuite un objet contenant les paramètres du composant comme `template` qui va contenir la description HTML du composant, `data` qui va contenir les etats composants,`props` qui va contenir `methods` aura les methodes present dans le composant,...
+
+```{JS}
+Vue.component("message", {
+  props: {
+    cls: {
+      type: [String, Number],
+      default: "alert alert-danger",
+    },
+    message: String,
+  },
+  template: /* html */ `
+  <div :class="cls">{{ message }}
+  </div>`,
+});
+let vm = new Vue({
+  el: "#app",
+  data() {
+    return {
+      message: "Salut guy",
+    };
+  },
+});
+
+```
+
+### Créer un composant de manière local
+
+Pour créer un composant de maniere local et utiliser uniquement à l'interieur d'un element viser par vuejs il faut juste créer un objet qui contient la description de ce composant comme on l'a decrit lors de la definition d'un composant globale, Le nom du composant sera le nom de l'objet.
+Une fois le composant créer il faut le glisser dans la section `components` du composant où il sera scoper
+
+```{JS}
+let message = {
+  props: {
+    cls: {
+      type: [String, Number],
+      default: "alert alert-danger",
+    },
+    message: String,
+  },
+  template: /* html */ `
+  <div :class="cls">{{ message }}
+  </div>`,
+};
+
+let vm = new Vue({
+  el: "#app",
+  data() {
+    return {
+      message: "Salut guy",
+    };
+  },
+  components: {
+    message,
+  },
+});
+
+```
 
 ## Quelques trucs et astuces
 
