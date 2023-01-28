@@ -10,9 +10,23 @@
   <body>
     <div id="app">
       <div class="container mt-5">
-        <message cls="alert alert-success" :message="message"></message>
+        <message
+          @close="hideAlert"
+          cls="alert alert-success"
+          :message="message"
+          v-if="alert"
+        ></message>
         <compter></compter>
         <compter :start="4" :step="5"></compter>
+        <div class="mb-3">
+          <button
+            @click="showAlert"
+            class="btn btn-outline-warning"
+            v-if="!alert"
+          >
+            Alerter
+          </button>
+        </div>
       </div>
     </div>
     <script src="./assets/js/vue.js"></script>

@@ -1,16 +1,28 @@
-let message = {
+const message = {
   props: {
     cls: {
       type: [String, Number],
       default: "alert alert-danger",
     },
     message: String,
+    header: {
+      type: String,
+    },
   },
   template: /* html */ `
-  <div :class="cls">{{ message }}
+  <div :class="cls">
+  
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" @click="close"></button>
+    <div className="header">{{header}}</div>
+  {{ message }}
   </div>`,
+  methods: {
+    close() {
+      this.$emit("close");
+    },
+  },
 };
-let compter = {
+const compter = {
   props: {
     start: {
       type: Number,
@@ -40,16 +52,24 @@ let compter = {
     this.count = this.start;
   },
 };
-
 let vm = new Vue({
   el: "#app",
   data() {
     return {
       message: "Salut guy",
+      alert: false,
     };
   },
   components: {
     compter,
     message,
+  },
+  methods: {
+    showAlert() {
+      this.alert = !this.alert;
+    },
+    hideAlert() {
+      this.alert = false;
+    },
   },
 });
