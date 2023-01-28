@@ -11,19 +11,33 @@ let message = {
   </div>`,
 };
 let compter = {
-  template: /*html */ `<div>
+  props: {
+    start: {
+      type: Number,
+      default: 0,
+    },
+    step: {
+      type: Number,
+      default: 1,
+    },
+  },
+  template: /*html */ `<div class="mb-3">
     <span>{{count}}</span>
     <button @click="increment" class="btn btn-secondary">Incrementer</button>
   </div>`,
   data() {
     return {
-      count: 0,
+      count: this.start,
     };
   },
   methods: {
     increment: function () {
-      this.count++;
+      console.log(this.step);
+      this.count = this.count + this.step;
     },
+  },
+  mounted: function () {
+    this.count = this.start;
   },
 };
 
