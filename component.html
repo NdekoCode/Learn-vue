@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./assets/css/bootstrap.min.css" />
+    <title>Apprendre vuejs</title>
+  </head>
+  <body>
+    <div id="app">
+      <div class="container mt-5">
+        <div class="point-container"></div>
+        <message
+          @close="hideAlert"
+          cls="alert alert-success"
+          :message="message"
+          v-if="alert"
+        >
+          <div slot="footer" class="card">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae,
+            enim! Eligend
+          </div>
+          <div slot="header" class="card-headr">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores,
+            quo?
+          </div>
+        </message>
+        <compter></compter>
+        <compter :start="4" :step="5"></compter>
+        <div class="mb-3">
+          <button
+            @click="showAlert"
+            class="btn btn-outline-warning"
+            v-if="!alert"
+          >
+            Alerter
+          </button>
+        </div>
+        <form-user v-model="user"></form-user>
+
+        <div>{{ user.firstName }} {{ user.lastName }}</div>
+      </div>
+    </div>
+    <script src="./assets/js/vue.js"></script>
+    <script src="./assets/js/component.js"></script>
+  </body>
+</html>

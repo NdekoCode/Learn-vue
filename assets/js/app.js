@@ -1,117 +1,54 @@
-const message = {
-  props: {
-    cls: {
-      type: [String, Number],
-      default: "alert alert-danger",
-    },
-    message: String,
-    header: {
-      type: String,
-    },
-  },
-  template: /* html */ `
-  <div :class="cls">
-  
-  <slot name="footer"></slot>
-  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" @click="close"></button>
-    <div className="header">{{header}}</div>
-  {{ message }}
-  <slot name="header"></slot>
-  </div>`,
-  methods: {
-    close() {
-      this.$emit("close");
-    },
-  },
-};
-const compter = {
-  props: {
-    start: {
-      type: Number,
-      default: 0,
-    },
-    step: {
-      type: Number,
-      default: 1,
-    },
-  },
-  template: /*html */ `<div class="mb-3">
-    <span>{{count}}</span>
-    <button @click="increment" class="btn btn-secondary">Incrementer</button>
-  </div>`,
+class NotificationsStore {
+  constructor(start = 0, step = 1) {
+    this.state = {
+      count: start,
+    };
+    console.log(this);
+    this.step = step;
+  }
+  increment() {
+    this.state.count += this.step;
+  }
+  decrement() {
+    this.state.count -= this.step;
+  }
+}
+const notifStore = new NotificationsStore();
+const counter = {
   data() {
     return {
-      count: this.start,
+      state: notifStore.state,
     };
   },
-  methods: {
-    increment: function () {
-      console.log(this.step);
-      this.count = this.count + this.step;
-    },
-  },
-  mounted: function () {
-    this.count = this.start;
-  },
-};
-const formUser = {
-  props: {
-    value: {
-      type: Object,
-    },
-  },
-  data() {
-    return {
-      user: { ...this.value },
-    };
-  },
-  methods: {
-    submitForm() {
-      this.$emit("input", this.user);
-    },
-  },
-  template: /*html */ `<form action="" @submit.prevent="submitForm">
-  <div class="mb-3">
-    <input type="text" class="form-control" placeholder="Votre Prenom"  v-model="user.firstName"/>
-  </div>
-  <div class="mb-3">
-    <input type="text" class="form-control" placeholder="Votre Nom"  v-model="user.lastName"/>
-  </div>
-  <button class="btn btn-success">Valider</button>
-  <div>
-  {{ user }}
-  </div>
-  </form>
-  `,
-};
-let vm = new Vue({
-  el: "#app",
-  data() {
-    return {
-      message: "Salut guy",
-      alert: false,
-      user: {
-        firstName: "Gloire",
-        lastName: "Mutaliko",
-      },
-    };
-  },
+  template: /*html */ `<div class="mb-3"> {{count}} <button class="btn btn-outline-secondary" @click="increment">Incrementer</button></div>`,
 
-  components: {
-    compter,
-    message,
-    formUser,
+  computed: {
+    count() {
+      return this.state.count;
+    },
   },
   methods: {
-    showAlert() {
-      this.alert = !this.alert;
+    increment() {
+      notifStore.increment();
     },
-    hideAlert() {
-      this.alert = false;
-    },
-    getData(data) {
-      console.log(data);
-      this.user = data;
-    },
+  },
+};
+const notifications = {
+  template: /*html */ `<div>
+  <counter></counter>
+    <button class="btn btn-secondary" @click="addNotification">add notif</button>
+  </div>`,
+  components: {
+    counter,
+  },
+  methods: {
+    addNotification() {},
+  },
+};
+const vm = new Vue({
+  el: "#app",
+  components: {
+    counter,
+    notifications,
   },
 });

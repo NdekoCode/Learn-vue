@@ -214,7 +214,11 @@ Il est possible de créer des animation avec vuejs lorsqu'on a un changement de 
 
 ### Verité sur le slot
 
-⚠️ Les slots sont executer au moment où ils sont ecrit, donc les changement des etats ne les affectent pas
+⚠️ Les slots sont executer au moment où ils sont ecrit, donc les changement des etats ne les affectent pas.
+
+### Store personnaliser
+
+Vus que vue.js est capable de detecter les modifications, on peut utiliser un simple objet javascript pour pouvoir stocker cela
 
 ## Guide pour Vue 3
 
