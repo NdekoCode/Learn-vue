@@ -35,11 +35,12 @@
     },
     "rules": {
       "vue/multi-word-component-names": [
-        "error",
+        "ignores",
         {
           "ignores": [
             [
-              "Counter"
+              "Counter",
+              "Alert"
             ]
           ]
         }
