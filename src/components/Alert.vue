@@ -1,7 +1,8 @@
 <template>
   <div>
-    <transition name="fade">
+    <transition name="bounce" appear mode="out-in">
       <div
+        key="visible"
         class="alert alert-success alert-dismissible fade show"
         role="alert"
         v-if="visible"
@@ -15,12 +16,11 @@
         ></button>
         <strong>Alert Heading</strong> {{ message }}
       </div>
-    </transition>
-    <transition name="bounce">
       <div
-        class="alert alert-success alert-dismissible fade show"
+        class="alert alert-danger alert-dismissible fade show"
         role="alert"
-        v-if="!visible"
+        key="invisible"
+        v-else
       >
         <button
           type="button"
@@ -40,7 +40,7 @@ export default {
   name: "Alert",
   data() {
     return {
-      visible: true,
+      visible: false,
     };
   },
   methods: {
@@ -72,6 +72,12 @@ export default {
 }
 .bounce-leave-active {
   animation: bounce-out 0.3s;
+}
+.bounce-move {
+  transition: transform 0.3s;
+}
+.fade-move {
+  transition: transform 0.3s;
 }
 @keyframes bounce-in {
   0% {

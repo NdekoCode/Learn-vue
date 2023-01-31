@@ -40,7 +40,8 @@
           "ignores": [
             [
               "Counter",
-              "Alert"
+              "Alert",
+              "Item"
             ]
           ]
         }

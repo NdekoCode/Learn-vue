@@ -226,7 +226,12 @@ Sachez que `LeNomDelaTransition-enter-active` veut dire quand l'element est entr
 Sur l'element `<transition name="fade"></transition>` quand l'element à l'interieur qui a un `v-if` ou un `v-show` va arriver il l'injecte direment dans le DOM, il lui donne la classe `fade-enter`, il attend un cycle puis ensuite il lui ajoute la classe `fade-enter-active`, lorsque un element quitte le DOM il lui donne d'abord la classe `fade-leave` puis il attend un cycle et ensuite il lui donne la classe `fade-leave-active`.
 
 En interne ce qu'il fait est qu'il detecte la fin de la transition et de l'animation en utilisant l'element `animation-end` et `transition-end`
-Mais dans les cas des animations CSS on passe generalement par 2 classe `LeNomDelANIMATION-ENTER-ACTIVE` ET `LeNomDelANIMATION-LEAVE-ACTIVE`
+Mais dans les cas des animations CSS on passe generalement par 2 classe `LeNomDelANIMATION-ENTER-ACTIVE` ET `LeNomDelANIMATION-LEAVE-ACTIVE`.
+Si vous voulez que votre animation demarre au chargement de la page vous pouvez ajouter l'attribut `appear` à votre balise transition.
+
+Sachez aussi que si dans une balise `<transition></transition>` on a des element en `v-if` combiner à `v-else` il faut les piloter car sinon l'animation ou les transition de l'element en `v-else` sera ignorer, ducoup pour remedier à cella il faut utiliser un mode et le plus souvent on utilise le mode `in-out` qui veut dire que le nouvel element va faire un transition ensuite l'ancienne element va disparaitre. et dans l'effet inverse celui que j'adore personnellement c'est le mode `out-in` càd d'abord le premier element va disparaitre et ensuite le second va apparaitre.
+
+Sachez aussi que vuejs detecte les elements qui ont changer de position dans le dom et ducoup si vous avez une transition il va rajouter une classe `LeNomDelaTransition-move` que vous pouvez utiliser en mettant une transition sur la transformation qu'elle applique pour avoir une transition dans le changement de position.
 
 ## Quelques trucs et astuces
 
@@ -285,3 +290,5 @@ Vus que vue.js est capable de detecter les modifications, on peut utiliser un si
 - Les modifier en vue3
 - Les filtres en Vue3
 - Comment créer un composant de manière globale avec Vuejs 3
+- Les animations en vuejs3
+- Les mixins avec vuejs 3
