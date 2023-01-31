@@ -177,7 +177,56 @@ let vm = new Vue({
 
 ### Les transitions
 
-En vuejs pour utiliser les transitions on utilise la balise `transition` puis on va lui donner un nom pour que l'on puisse le cibler avec des classes CSS pour faire des transition particulier `<transition name="LeNomDelaTransition"></transition>`, les transitions fonctionnent avec les `v-if` et les `v-show`
+En vuejs pour utiliser les transitions on utilise la balise `transition` puis on va lui donner un nom pour que l'on puisse le cibler avec des classes CSS pour faire des transition particulier `<transition name="LeNomDelaTransition"></transition>`, les transitions fonctionnent avec les `v-if` et les `v-show`.
+Si on veut animer un element qui a un `v-if` ou un `v-show` il faut l'entourer de la balise `transition` et à l'interieur de cette balise là on va donner un nom à notre transition ,
+Une fois le nom de la transition donner, automatiquement cela veut dire que mainant on va pouvoir y appliquer des classes CSS pour pouvoir gerer cette animation.
+Les animations en vuejs utilisent le meme systeme de classe que Angular.
+par exemple:
+
+```{VUE}
+
+  <transition name="fade">
+    <div
+      class="alert alert-success alert-dismissible fade show"
+      role="alert"
+      v-if="visible"
+    >
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="alert"
+        aria-label="Close"
+        @click="toggle"
+      ></button>
+      <strong>Alert Heading</strong> {{ message }}
+    </div>
+  </transition>
+```
+
+Pour faire les animation sur un element `<transition name="LeNomDelaTransition"></transition>` on doit ajouter sur son nom dans le CSS 3 classe qui seront utiliser en coupler, et c'est sont `enter-active` et `leave-active`, `enter-active` et `leave-active` sont utiliser pour demarrer l'animation, ils permettent de specifier l'Etat que l'on va avoir au debut et en fin de l'animation, et souvent dans ces genre de cas, on peut une transition sur quelques proprieter CSS sur cet element.
+
+```{CSS}
+/** l'Etat que l'on aura au debut et en fin de l'animation */
+.LeNomDelaTransition-enter-active,LeNomDelaTransition-leave-active {
+
+}
+.fade-enter-active,.fade-leave-active {
+  opacity: opacity 0.3s;
+  transition: transform(20px);
+}
+
+```
+
+Par exemple on a l'element `<transition name="LeNomDelaTransition"></transition>` quand l'element à l'interieur qui a un `v-if` ou un `v-show` va arriver, il va l'injecte direment dans le DOM, il lui donne la classe `LeNomDelaTransition-enter`, il attend un cycle puis ensuite il lui ajoute la classe `LeNomDelaTransition-enter-active`, lorsque un element quitte le DOM il lui donne d'abord la classe `LeNomDelaTransition-leave` puis il attend un cycle et ensuite il lui donne la classe `LeNomDelaTransition-leave-active`.
+
+Sachez que `LeNomDelaTransition-enter-active` veut dire quand l'element est entrer d'etre inserer dans le DOM et `LeNomDelaTransition-leave-active` veut dire quand l'element est entrer de d'etre retirer du DOM.
+`LeNomDelaTransition-enter`: veut dire quand l'element entre dans le DOM
+``
+
+Sur l'element `<transition name="fade"></transition>` quand l'element à l'interieur qui a un `v-if` ou un `v-show` va arriver il l'injecte direment dans le DOM, il lui donne la classe `fade-enter`, il attend un cycle puis ensuite il lui ajoute la classe `fade-enter-active`, lorsque un element quitte le DOM il lui donne d'abord la classe `fade-leave` puis il attend un cycle et ensuite il lui donne la classe `fade-leave-active`.
+
+En interne ce qu'il fait est qu'il detecte la fin de la transition et de l'animation en utilisant l'element `animation-end` et `transition-end`
+Mais dans les cas des animations CSS on passe generalement par 2 classe `LeNomDelANIMATION-ENTER-ACTIVE` ET `LeNomDelANIMATION-LEAVE-ACTIVE`
 
 ## Quelques trucs et astuces
 
