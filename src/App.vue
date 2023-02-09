@@ -1,25 +1,17 @@
 <template>
   <div id="app">
     <div class="container mt-5">
-      <Counter />
-      <Counter />
-      <Item />
-      <Alert message="Apprenez à etre productif" />
+      <Users />
     </div>
   </div>
 </template>
 
 <script>
-import Alert from "./components/Alert";
-import Counter from "./components/Counter.vue";
-import Item from "./components/Item.vue";
+import Users from "./components/Users";
 export default {
   name: "App",
   components: {
-    // HelloWorld,
-    Counter,
-    Alert,
-    Item,
+    Users,
   },
 };
 </script>
