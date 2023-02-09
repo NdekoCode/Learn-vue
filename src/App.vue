@@ -7,7 +7,11 @@
 </template>
 
 <script>
+import axios from "axios";
+import Vue from "vue";
+import vueAxios from "vue-axios";
 import Users from "./components/Users";
+Vue.use(vueAxios, axios);
 export default {
   name: "App",
   components: {
