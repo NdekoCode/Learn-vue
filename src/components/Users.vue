@@ -52,35 +52,6 @@ export default {
       }),
     };
   },
-  methods: {
-    save(user) {
-      this.loading = user.id;
-      this.instance
-        .put("/users/" + user.id, user)
-        .then((response) => {
-          console.log(response);
-          this.loading = false;
-        })
-        .catch((err) => {
-          console.log(err);
-          this.loading = false;
-        });
-    },
-    destroy(user) {
-      this.loading = user.id;
-      this.instance
-        .delete("users/" + user.id)
-        .then((res) => {
-          this.loading = false;
-          console.log(res);
-          this.users = this.users.filter((d) => d.id !== user.id);
-        })
-        .catch((err) => {
-          this.loading = false;
-          console.log(err);
-        });
-    },
-  },
   created() {
     this.instance
       .get("users")
