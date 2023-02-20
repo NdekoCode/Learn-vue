@@ -8,6 +8,7 @@ import Users from "../pages/Users.vue";
 const routes = [
   {
     path: "/",
+    // Si on veut charger plusieurs composant dans une page selon le nom attribuer à <router-view name=""></router-view>
     components: {
       default: Home,
       sidebar: Sidebar,

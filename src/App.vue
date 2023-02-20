@@ -1,13 +1,20 @@
 <template>
   <div id="app">
+  <main>
   <div class="sidebar">
-  <h1>Sidebar</h1>
     <router-view name="sidebar"></router-view>
   </div>
+  <div>
+    
+
+  <Navbar/>
     <div class="container mt-5">
     <h1>Main</h1>
     <router-view></router-view>
     </div>
+  </div>
+
+</main>
   </div>
 </template>
 
@@ -15,11 +22,22 @@
 import axios from "axios";
 import Vue from "vue";
 import vueAxios from "vue-axios";
+import Navbar from "./components/Navbar";
 Vue.use(vueAxios, axios);
 export default {
   name: "App",
+  components:{Navbar}
 };
 </script>
 
-<style src="./assets/css/bootstrap.min.css">
+<style scope>
+main {
+  display: flex;
+    flex-wrap: nowrap;
+    height: 100vh;
+    height: -webkit-fill-available;
+    max-height: 100vh;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
 </style>
