@@ -1,6 +1,10 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import App from "./App.vue";
+import Blog from "./pages/Blog.vue";
+import Contact from "./pages/Contact.vue";
+import Home from "./pages/Home.vue";
+import Users from "./pages/Users.vue";
 Vue.config.productionTip = false;
 Vue.use(VueRouter);
 const router = new VueRouter({
@@ -8,7 +12,19 @@ const router = new VueRouter({
   routes: [
     {
       path: "/",
-      component: require("./pages/Home.vue"),
+      component: Home,
+    },
+    {
+      path: "/blog",
+      component: Blog,
+    },
+    {
+      path: "/contact",
+      component: Contact,
+    },
+    {
+      path: "/users",
+      component: Users,
     },
   ],
 });
