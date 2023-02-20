@@ -1,6 +1,11 @@
 <template>
   <div id="app">
+  <div class="sidebar">
+  <h1>Sidebar</h1>
+    <router-view name="sidebar"></router-view>
+  </div>
     <div class="container mt-5">
+    <h1>Main</h1>
     <router-view></router-view>
     </div>
   </div>

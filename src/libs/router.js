@@ -1,3 +1,5 @@
+import Sidebar from "../components/Sidebar.vue";
+import Article from "../pages/Article.vue";
 import Blog from "../pages/Blog.vue";
 import Contact from "../pages/Contact.vue";
 import Home from "../pages/Home.vue";
@@ -6,11 +8,19 @@ import Users from "../pages/Users.vue";
 const routes = [
   {
     path: "/",
-    component: Home,
+    components: {
+      default: Home,
+      sidebar: Sidebar,
+    },
   },
   {
     path: "/blog",
     component: Blog,
+  },
+  {
+    // On veut que l'id soit numeric
+    path: "/article/:id(\\d+)",
+    component: Article,
   },
   {
     path: "/contact",
