@@ -6,8 +6,8 @@
       </a>
 
       <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-        <li><router-link to="/" class="nav-link px-2 link-secondary">Home</router-link></li>
-        <li><router-link to="/blog" class="nav-link px-2 link-secondary">Blog</router-link></li>
+        <li><router-link :to="{name:'home'}" class="nav-link px-2 link-secondary">Home</router-link></li>
+        <li><router-link :to="{name:'blog'}" class="nav-link px-2 link-secondary">Blog</router-link></li>
         <li><router-link to="/contact" class="nav-link px-2 link-secondary">Contact</router-link></li>
         <li><router-link to="/article/1" class="nav-link px-2 link-secondary">Article</router-link></li>
       </ul>
@@ -22,5 +22,4 @@
 </script>
 
 <style lang="scss" scoped>
-
 </style>

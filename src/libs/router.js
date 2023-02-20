@@ -13,27 +13,33 @@ const routes = [
       default: Home,
       sidebar: Sidebar,
     },
+    name: "home",
   },
   {
     path: "/blog",
     component: Blog,
+    name: "blog",
   },
   {
     // On veut que l'id soit numeric
     path: "/article/:id(\\d+)",
     component: Article,
+    name: "article",
   },
   {
     path: "/contact",
     component: Contact,
+    name: "contact",
   },
   {
     path: "/users",
     component: Users,
+    name: "user",
   },
   {
     path: "*",
     component: page404,
+    name: "404",
   },
 ];
 export default routes;
