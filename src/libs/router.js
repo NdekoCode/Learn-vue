@@ -1,6 +1,5 @@
 import Sidebar from "../components/Sidebar.vue";
 import Article from "../pages/Article.vue";
-import Blog from "../pages/Blog.vue";
 import Contact from "../pages/Contact.vue";
 import Home from "../pages/Home.vue";
 import Items from "../pages/Items.vue";
@@ -18,7 +17,8 @@ const routes = [
   },
   {
     path: "/blog",
-    component: Blog,
+    // For lazy laoding page importer
+    component: () => import("../pages/Blog.vue"),
     name: "blog",
   },
   {
@@ -41,6 +41,20 @@ const routes = [
     path: "/items",
     component: Items,
     name: "settings",
+    // Sera executer avant que l'on accède à cette route et il prend 3 paramètres
+    /**
+     * -route: qui vous permet de recuperer les informations sur la route
+     * - redirect: un callback que l'on va appeler pour pouvoir rediriger
+     * - next: qui est un callback que l'on va pouvoir appeler pour lui dire d'aller à la route suivante ou de continuer
+     */
+    beforeEnter(route, redirect, next) {
+      const confirm = window.confirm("Etes vous déjà connecter ?");
+      if (confirm) {
+        next();
+      } else {
+        console.log(route, redirect, next);
+      }
+    },
   },
   {
     path: "*",
