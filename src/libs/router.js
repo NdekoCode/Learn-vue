@@ -3,6 +3,7 @@ import Article from "../pages/Article.vue";
 import Blog from "../pages/Blog.vue";
 import Contact from "../pages/Contact.vue";
 import Home from "../pages/Home.vue";
+import Items from "../pages/Items.vue";
 import page404 from "../pages/page404.vue";
 import Users from "../pages/Users.vue";
 const routes = [
@@ -35,6 +36,11 @@ const routes = [
     path: "/users",
     component: Users,
     name: "user",
+  },
+  {
+    path: "/items",
+    component: Items,
+    name: "settings",
   },
   {
     path: "*",

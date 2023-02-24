@@ -1,7 +1,7 @@
 <template>
   <div class="mb-3">
     <transition-group tag="ul" class="mb-3" name="fade">
-      <li v-for="(item, key) in items" :key="key">{{ item }}</li>
+      <li v-for="item in items" :key="item">{{ item }}</li>
     </transition-group>
     <button @click="add" class="btn btn-outline-secondary mb-3 me-1">
       Add item

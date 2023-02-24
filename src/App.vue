@@ -1,20 +1,18 @@
 <template>
   <div id="app">
-  <main>
-  <div class="sidebar">
-    <router-view name="sidebar"></router-view>
-  </div>
-  <div>
-    
-
-  <Navbar/>
-    <div class="container mt-5">
-    <h1>Main</h1>
-    <router-view></router-view>
-    </div>
-  </div>
-
-</main>
+    <main>
+      <div class="sidebar">
+        <router-view name="sidebar"></router-view>
+      </div>
+      <div>
+        <Navbar />
+        <div class="container mt-5">
+          <transition name="fade" mode="out-in">
+            <router-view></router-view>
+          </transition>
+        </div>
+      </div>
+    </main>
   </div>
 </template>
 
@@ -26,18 +24,18 @@ import Navbar from "./components/Navbar";
 Vue.use(vueAxios, axios);
 export default {
   name: "App",
-  components:{Navbar}
+  components: { Navbar },
 };
 </script>
 
 <style scope>
 main {
   display: flex;
-    flex-wrap: nowrap;
-    height: 100vh;
-    height: -webkit-fill-available;
-    max-height: 100vh;
-    overflow-x: auto;
-    overflow-y: hidden;
+  flex-wrap: nowrap;
+  height: 100vh;
+  height: -webkit-fill-available;
+  max-height: 100vh;
+  overflow-x: auto;
+  overflow-y: hidden;
 }
 </style>
