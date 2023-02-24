@@ -47,6 +47,13 @@
         </li>
         <li>
           <router-link
+            :to="{ name: 'user' }"
+            class="nav-link px-2 link-secondary"
+            >Users</router-link
+          >
+        </li>
+        <li>
+          <router-link
             :to="{ name: 'settings' }"
             class="nav-link px-2 link-secondary"
             >Items</router-link

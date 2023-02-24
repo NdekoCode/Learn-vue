@@ -2,9 +2,7 @@ import Sidebar from "../components/Sidebar.vue";
 import Article from "../pages/Article.vue";
 import Contact from "../pages/Contact.vue";
 import Home from "../pages/Home.vue";
-import Items from "../pages/Items.vue";
 import page404 from "../pages/page404.vue";
-import Users from "../pages/Users.vue";
 const routes = [
   {
     path: "/",
@@ -34,12 +32,12 @@ const routes = [
   },
   {
     path: "/users",
-    component: Users,
+    component: () => import("../pages/Users.vue"),
     name: "user",
   },
   {
     path: "/items",
-    component: Items,
+    component: () => import("../pages/Items.vue"),
     name: "settings",
     // Sera executer avant que l'on accède à cette route et il prend 3 paramètres
     /**

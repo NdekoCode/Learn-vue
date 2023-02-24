@@ -42,6 +42,25 @@
 <script>
 export default {
   name: "Users",
+  // Protection des composants, utile si vous voulez faire un appel ajax avant que la page ne s'affiche et l'afficher uniquement quant la requete AJAX est terminer.
+  // A eviter si votre composant à des props
+  // similaire à beforeEnteer des routes
+  beforeRouteEnter(route, redirect, next) {
+    const confirm = window.confirm("Etes-vous déjà connecter ?");
+    if (confirm) {
+      next();
+    } else {
+      console.log(route, redirect);
+    }
+  },
+  beforeRouteLeave(route, redirect, next) {
+    const confirm = window.confirm("Voulez-vous vraiment quitter ?");
+    if (confirm) {
+      next();
+    } else {
+      console.log(route, redirect);
+    }
+  },
   data() {
     return {
       users: [],
@@ -94,6 +113,3 @@ export default {
   },
 };
 </script>
-
-<style lang="scss" scoped>
-</style>
