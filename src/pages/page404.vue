@@ -9,7 +9,3 @@
         name:"page404"
     }
 </script>
-
-<style lang="scss" scoped>
-
-</style>
