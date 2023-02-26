@@ -15,7 +15,8 @@ const routes = [
   },
   {
     path: "/blog",
-    // For lazy laoding page importer
+    // For lazy laoding page importer,
+    // Charge le composant de manière asynchrone, il sera charger uniquement quand l'utilisateur en aura besoin.
     component: () => import("../pages/Blog.vue"),
     name: "blog",
   },
@@ -32,6 +33,7 @@ const routes = [
   },
   {
     path: "/users",
+    // Charge le composant de manière asynchrone, il sera charger uniquement quand l'utilisateur en aura besoin.
     component: () => import("../pages/Users.vue"),
     name: "user",
   },
