@@ -57,7 +57,7 @@ const routes = [
     },
   },
   {
-    path: "*",
+    path: "/:pathMatch(.*)*",
     component: page404,
     name: "404",
   },

@@ -67,7 +67,6 @@ export default {
       loading: false,
       instance: this.axios.create({
         baseURL: "https://jsonplaceholder.typicode.com",
-        timeout: 5000,
       }),
     };
   },

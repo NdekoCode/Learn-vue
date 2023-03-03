@@ -292,3 +292,7 @@ Vus que vue.js est capable de detecter les modifications, on peut utiliser un si
 - Comment créer un composant de manière globale avec Vuejs 3
 - Les animations en vuejs3
 - Les mixins avec vuejs 3
+
+## Composition API
+
+Un composant n'est censer s'occuper que des interactions, ducoup l'option API de vuejs ne permettais pas de separer d'une manière optimal les differentes logique dans un composant vuejs, c'est ce problème que va chercher à résoudre la composition API

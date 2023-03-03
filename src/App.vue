@@ -1,41 +1,32 @@
+<script setup>
+import Navbar from "./components/Navbar.vue";
+</script>
+
 <template>
-  <div id="app">
-    <main>
-      <div class="sidebar">
-        <router-view name="sidebar"></router-view>
-      </div>
-      <div>
-        <Navbar />
-        <div class="container mt-5">
-          <transition name="fade" mode="out-in">
-            <router-view></router-view>
-          </transition>
-        </div>
-      </div>
-    </main>
+  <main class="d-flex">
+    <router-view name="sidebar"></router-view>
+    <article>
+      <Navbar />
+
+      <router-view> </router-view>
+    </article>
+  </main>
+  <div>
+    <h1>Hey</h1>
   </div>
 </template>
 
-<script>
-import axios from "axios";
-import Vue from "vue";
-import vueAxios from "vue-axios";
-import Navbar from "./components/Navbar";
-Vue.use(vueAxios, axios);
-export default {
-  name: "App",
-  components: { Navbar },
-};
-</script>
-
-<style scope>
-main {
-  display: flex;
-  flex-wrap: nowrap;
-  height: 100vh;
-  height: -webkit-fill-available;
-  max-height: 100vh;
-  overflow-x: auto;
-  overflow-y: hidden;
+<style scoped>
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.vue:hover {
+  filter: drop-shadow(0 0 2em #42b883aa);
 }
 </style>

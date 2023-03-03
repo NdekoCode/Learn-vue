@@ -1,15 +1,15 @@
-import Vue from "vue";
-import VueRouter from "vue-router";
+import axios from "axios";
+import { createApp } from "vue";
+import vueAxios from "vue-axios";
+import { createRouter, createWebHistory } from "vue-router";
 import App from "./App.vue";
 import "./assets/css/bootstrap.min.css";
 import routes from "./libs/router";
-Vue.config.productionTip = false;
-Vue.use(VueRouter);
-const router = new VueRouter({
-  mode: "history",
+const router = new createRouter({
+  history: createWebHistory(import.meta.env.BASE_URL),
   routes,
 });
-new Vue({
-  render: (h) => h(App),
-  router,
-}).$mount("#app");
+const app = createApp(App);
+app.use(router);
+app.use(vueAxios, axios);
+app.mount("#app");
