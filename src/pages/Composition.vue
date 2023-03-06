@@ -1,12 +1,16 @@
 <template>
-  <Comp />
+  <IncrementComp />
+  <!-- <CompterNoComposition /> -->
 </template>
 
 <script>
-import Comp from "../components/Comp.vue";
+// import CompterNoComposition from "../components/CompterNoComposition.vue";
+import IncrementComp from "../components/IncrementComp.vue";
 
 export default {
   name: "Composition",
-  components: { Comp },
+  components: {
+    IncrementComp,
+  },
 };
 </script>

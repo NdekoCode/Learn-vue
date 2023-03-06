@@ -11,7 +11,7 @@
 
 <script>
 export default {
-  name: "Comp",
+  name: "CompterNoComposition",
   data() {
     return {
       count: 0,
