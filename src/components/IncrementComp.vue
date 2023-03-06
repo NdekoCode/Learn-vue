@@ -6,14 +6,10 @@
 </template>
 
 <script>
-import { ref } from "vue";
+import { useIncrement } from "../compositions/increment";
 export default {
   setup(props) {
-    const n = ref(0);
-    console.info(n);
-    const increment = () => {
-      n.value++;
-    };
+    const [n, increment] = useIncrement();
     return {
       n,
       increment,
