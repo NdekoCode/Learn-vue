@@ -19,34 +19,11 @@
 </template>
 
 <script>
-import { AxiosError } from "axios";
-
+import useFetch from "../compositions/fetcher";
 export default {
-  data() {
-    return {
-      instance: this.axios.create({
-        baseURL: "https://jsonplaceholder.typicode.com",
-        timeout: 5000,
-      }),
-      users: [],
-      error: null,
-      loading: false,
-    };
-  },
-  methods: {
-    async fetchUsers() {
-      this.loading = true;
-      try {
-        this.users = await this.instance.get("users");
-      } catch (error) {
-        if (error instanceof AxiosError) {
-          this.error = "L'utilisateur n'existe pas";
-        } else {
-          console.error(error);
-        }
-      }
-      this.loading = false;
-    },
+  setup(props) {
+    const { loading, users, error, fetchUsers } = useFetch();
+    return { loading, users, error, fetchUsers };
   },
   mounted() {
     this.fetchUsers()
