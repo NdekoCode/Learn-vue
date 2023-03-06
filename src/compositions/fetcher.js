@@ -1,29 +1,31 @@
 import { api, NotFoundError } from "@/helpers/api";
-import { ref } from "vue";
+import { reactive, toRefs } from "vue";
+// import { ref } from "vue"; // On va utiliser "reactive" à la place
 
 const useFetch = (url) => {
-  const loading = ref(false);
-  const data = ref([]);
-  const error = ref(null);
+  // Pour créer une proprieter reactive
+  const state = reactive({
+    loading: false,
+    data: [],
+    error: null,
+  });
   const fetchData = async () => {
     try {
-      loading.value = true;
-      data.value = await api(url);
-      console.info(data);
+      state.loading = true;
+      state.data = await api(url);
     } catch (e) {
       if (e instanceof AxiosError || e instanceof NotFoundError) {
-        error.value = "L'utilisateur n'existe pas";
-        console.log(error);
+        state.error = "L'utilisateur n'existe pas";
       } else {
         console.error(error);
       }
     }
-    loading.value = false;
+    state.loading = false;
   };
+  console.log(state);
   return {
-    loading,
-    data,
-    error,
+    // Pour transformer tous les clés des "state en reactive"
+    ...toRefs(state),
     fetchData,
   };
 };
