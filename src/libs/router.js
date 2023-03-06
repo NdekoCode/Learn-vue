@@ -28,6 +28,16 @@ const routes = [
     name: "composition",
   },
   {
+    path: "/userscomp",
+    // For lazy laoding page importer,
+    // Charge le composant de manière asynchrone, il sera charger uniquement quand l'utilisateur en aura besoin.
+    components: {
+      default: () => import("../pages/UComp.vue"),
+      sidebar: Sidebar,
+    },
+    name: "userscomp",
+  },
+  {
     // On veut que l'id soit numeric
     path: "/article/:id(\\d+)",
     component: Article,

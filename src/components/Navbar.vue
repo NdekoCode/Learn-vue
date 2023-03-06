@@ -54,6 +54,13 @@
         </li>
         <li>
           <router-link
+            :to="{ name: 'userscomp' }"
+            class="nav-link px-2 link-secondary"
+            >Comp users</router-link
+          >
+        </li>
+        <li>
+          <router-link
             :to="{ name: 'user' }"
             class="nav-link px-2 link-secondary"
             >Users</router-link

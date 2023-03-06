@@ -3,11 +3,10 @@ import Navbar from "./components/Navbar.vue";
 </script>
 
 <template>
+  <Navbar />
   <main class="d-flex">
     <router-view name="sidebar"></router-view>
     <article>
-      <Navbar />
-
       <router-view> </router-view>
     </article>
   </main>
