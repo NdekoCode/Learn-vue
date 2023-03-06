@@ -28,7 +28,9 @@
 import useFetch from "../compositions/fetcher";
 export default {
   setup(props) {
-    const { loading, data, error, fetchData } = useFetch();
+    const { loading, data, error, fetchData } = useFetch(
+      "https://jsonplaceholder.typicode.com/users"
+    );
     return { loading, users: data, error, fetchUsers: fetchData };
   },
 };
