@@ -3,7 +3,7 @@
     <transition name="bounce" appear mode="out-in">
       <div
         key="visible"
-        class="alert alert-success alert-dismissible fade show"
+        class="alert alert-success fade show"
         role="alert"
         v-if="visible"
       >
@@ -17,7 +17,7 @@
         <strong>Alert Heading</strong> {{ message }}
       </div>
       <div
-        class="alert alert-danger alert-dismissible fade show"
+        class="alert alert-danger fade show"
         role="alert"
         key="invisible"
         v-else
@@ -36,19 +36,16 @@
   </div>
 </template>
 <script setup>
-import { computed } from "vue";
-
-let firstName = "Arick";
-let lastName = "Bulakali";
-
-const rename = () => {
-  firstName = "Patrick";
-  lastName = "Babunga";
-};
-let visible = ref(false);
-const fullName = computed(() => `${firstName} ${lastName}`);
-const toogle = () => {
-  visible = !visible;
+import { ref } from "vue";
+defineProps({
+  message: {
+    type: String,
+    default: "",
+  },
+});
+const visible = ref(false);
+const toggle = () => {
+  visible.value = !visible.value;
 };
 </script>
 <style scoped>

@@ -3,14 +3,7 @@
   <!-- <CompterNoComposition /> -->
 </template>
 
-<script>
+<script setup>
 // import CompterNoComposition from "../components/CompterNoComposition.vue";
 import IncrementComp from "../components/IncrementComp.vue";
-
-export default {
-  name: "Composition",
-  components: {
-    IncrementComp,
-  },
-};
 </script>

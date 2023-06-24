@@ -4,12 +4,6 @@
   </div>
 </template>
 
-<script>
+<script seup>
 import Item from "../components/Item.vue";
-export default {
-  name: "Items",
-  components: {
-    Item,
-  },
-};
 </script>

@@ -8,18 +8,9 @@
     </div>
   </div>
 </template>
-  
-  <script>
-import Alert from "./Alert";
+
+<script setup>
+import Alert from "./Alert.vue";
 import Counter from "./Counter.vue";
 import Item from "./Item.vue";
-export default {
-  name: "AlertContainer",
-  components: {
-    // HelloWorld,
-    Counter,
-    Alert,
-    Item,
-  },
-};
 </script>

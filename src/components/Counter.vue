@@ -4,24 +4,12 @@
     <button class="btn btn-secondary" @click="increment">Incrementer</button>
   </div>
 </template>
-<script>
+<script setup>
+import { ref } from "vue";
 import notifStore from "../store/NotificationsStore";
-export default {
-  name: "Counter",
-  data() {
-    return {
-      state: notifStore.state,
-    };
-  },
-  computed: {
-    count() {
-      return this.state.count;
-    },
-  },
-  methods: {
-    increment() {
-      notifStore.increment();
-    },
-  },
+const state = ref(notifStore.state);
+const count = ref(state.count);
+const increment = () => {
+  notifStore.increment();
 };
 </script>

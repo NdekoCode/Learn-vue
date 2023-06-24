@@ -2,7 +2,7 @@
   <div>
     <section class="row">
       <article
-        class="card shadow col-md-4 mb-3 gap-1"
+        class="gap-1 mb-3 shadow card col-md-4"
         v-for="user in users"
         :key="user.id"
       >
@@ -39,76 +39,71 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: "Users",
-  // Protection des composants, utile si vous voulez faire un appel ajax avant que la page ne s'affiche et l'afficher uniquement quant la requete AJAX est terminer.
-  // A eviter si votre composant à des props
-  // similaire à beforeEnteer des routes
-  beforeRouteEnter(route, redirect, next) {
-    const confirm = window.confirm("Etes-vous déjà connecter ?");
-    if (confirm) {
-      next();
-    } else {
-      console.log(route, redirect);
-    }
-  },
-  beforeRouteLeave(route, redirect, next) {
-    const confirm = window.confirm("Voulez-vous vraiment quitter ?");
-    if (confirm) {
-      next();
-    } else {
-      console.log(route, redirect);
-    }
-  },
-  data() {
-    return {
-      users: [],
-      loading: false,
-      instance: this.axios.create({
-        baseURL: "https://jsonplaceholder.typicode.com",
-      }),
-    };
-  },
-  methods: {
-    save(user) {
-      this.loading = user.id;
-      this.instance
-        .put("/users/" + user.id, user)
-        .then((response) => {
-          console.log(response);
-          this.loading = false;
-        })
-        .catch((err) => {
-          console.log(err);
-          this.loading = false;
-        });
-    },
-    destroy(user) {
-      this.loading = user.id;
-      this.instance
-        .delete("users/" + user.id)
-        .then((res) => {
-          this.loading = false;
-          console.log(res);
-          this.users = this.users.filter((d) => d.id !== user.id);
-        })
-        .catch((err) => {
-          this.loading = false;
-          console.log(err);
-        });
-    },
-  },
-  created() {
-    this.instance
-      .get("users")
-      .then(({ data }) => {
-        console.log(data);
-        this.users = data;
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  },
+<script setup>
+// Protection des composants, utile si vous voulez faire un appel ajax avant que la page ne s'affiche et l'afficher uniquement quant la requete AJAX est terminer.
+// A eviter si votre composant à des props
+// similaire à beforeEnteer des routes
+beforeRouteEnter((route, redirect, next) => {
+  const confirm = window.confirm("Etes-vous déjà connecter ?");
+  if (confirm) {
+    next();
+  } else {
+    console.log(route, redirect);
+  }
+});
+
+beforeRouteLeave((route, redirect, next) => {
+  const confirm = window.confirm("Voulez-vous vraiment quitter ?");
+  if (confirm) {
+    next();
+  } else {
+    console.log(route, redirect);
+  }
+});
+const users = ref([]);
+const loading = ref(false);
+const instance = reactive(
+  axios.create({
+    baseURL: "https://jsonplaceholder.typicode.com",
+  })
+);
+const save = (user) => {
+  loading.value = user.id;
+  instance
+    .put("/users/" + user.id, user)
+    .then((response) => {
+      console.log(response);
+      loading.value = false;
+    })
+    .catch((err) => {
+      console.log(err);
+      loading.value = false;
+    });
 };
+const destroy = (user) => {
+  loading.value = user.id;
+  instance
+    .delete("users/" + user.id)
+    .then((res) => {
+      loading.value = false;
+      console.log(res);
+      users.value = users.value.filter((d) => d.id !== user.id);
+    })
+    .catch((err) => {
+      loading.value = false;
+      console.log(err);
+    });
+};
+
+onMounted(() => {
+  instance
+    .get("users")
+    .then(({ data }) => {
+      console.log(data);
+      users.value = data;
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
 </script>

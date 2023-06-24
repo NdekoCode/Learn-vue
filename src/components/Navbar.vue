@@ -1,11 +1,11 @@
 <template>
   <div class="container">
     <header
-      class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom"
+      class="flex-wrap py-3 mb-4 d-flex align-items-center justify-content-center justify-content-md-between border-bottom"
     >
       <router-link
         :to="{ name: 'home' }"
-        class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none"
+        class="mb-2 d-flex align-items-center col-md-3 mb-md-0 text-dark text-decoration-none"
       >
         <svg
           class="bi me-2"
@@ -18,58 +18,58 @@
         </svg>
       </router-link>
 
-      <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+      <ul class="mb-2 nav col-12 col-md-auto justify-content-center mb-md-0">
         <li>
           <router-link
             :to="{ name: 'home' }"
-            class="nav-link px-2 link-secondary"
+            class="px-2 nav-link link-secondary"
             >Home</router-link
           >
         </li>
         <li>
           <router-link
             :to="{ name: 'blog' }"
-            class="nav-link px-2 link-secondary"
+            class="px-2 nav-link link-secondary"
             >Blog</router-link
           >
         </li>
         <li>
-          <router-link to="/contact" class="nav-link px-2 link-secondary"
+          <router-link to="/contact" class="px-2 nav-link link-secondary"
             >Contact</router-link
           >
         </li>
         <li>
           <router-link
             :to="{ name: 'article', params: { id: 1 } }"
-            class="nav-link px-2 link-secondary"
+            class="px-2 nav-link link-secondary"
             >Article</router-link
           >
         </li>
         <li>
           <router-link
             :to="{ name: 'composition' }"
-            class="nav-link px-2 link-secondary"
+            class="px-2 nav-link link-secondary"
             >composition</router-link
           >
         </li>
         <li>
           <router-link
             :to="{ name: 'userscomp' }"
-            class="nav-link px-2 link-secondary"
+            class="px-2 nav-link link-secondary"
             >Comp users</router-link
           >
         </li>
         <li>
           <router-link
             :to="{ name: 'user' }"
-            class="nav-link px-2 link-secondary"
+            class="px-2 nav-link link-secondary"
             >Users</router-link
           >
         </li>
         <li>
           <router-link
             :to="{ name: 'settings' }"
-            class="nav-link px-2 link-secondary"
+            class="px-2 nav-link link-secondary"
             >Items</router-link
           >
         </li>
@@ -77,7 +77,3 @@
     </header>
   </div>
 </template>
-
-<script>
-export default {};
-</script>
