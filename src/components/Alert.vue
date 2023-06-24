@@ -35,28 +35,23 @@
     <button class="btn btn-secondary" @click="toggle">Toggle</button>
   </div>
 </template>
-<script>
-export default {
-  name: "Alert",
-  data() {
-    return {
-      visible: false,
-    };
-  },
-  methods: {
-    toggle() {
-      this.visible = !this.visible;
-    },
-  },
-  props: {
-    message: {
-      type: String,
-      default: "",
-    },
-  },
+<script setup>
+import { computed } from "vue";
+
+let firstName = "Arick";
+let lastName = "Bulakali";
+
+const rename = () => {
+  firstName = "Patrick";
+  lastName = "Babunga";
+};
+let visible = ref(false);
+const fullName = computed(() => `${firstName} ${lastName}`);
+const toogle = () => {
+  visible = !visible;
 };
 </script>
-<style>
+<style scoped>
 .fade-enter-active,
 .fade-leave-active {
   transition: 0.3s, transform 0.3s;

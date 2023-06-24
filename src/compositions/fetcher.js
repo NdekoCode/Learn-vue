@@ -22,11 +22,12 @@ const useFetch = (url) => {
     }
     state.loading = false;
   };
-  console.log(state);
+
   return {
     // Pour transformer tous les clés des "state en reactive"
     ...toRefs(state),
     fetchData,
   };
 };
+
 export default useFetch;
