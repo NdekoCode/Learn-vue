@@ -1,9 +1,8 @@
 <script setup lang="ts">
 import { computed, onMounted, reactive, ref } from "vue";
 import ChildComp from "./ChildComp.vue";
+import FormComp from "./FormComp.vue";
 import Search from "./Search.vue";
-const firstName = ref("Arick");
-const lastName = ref("Bulakali");
 const fruits = ref([
   { title: "Tomate", price: 10, actif: true },
   { title: "Banane", price: 20, actif: false },
@@ -14,8 +13,8 @@ const getValue = (e) => {
   fruits.value.push({ title: e, price: 0, actif: true });
 };
 const rename = () => {
-  firstName.value = "Patrick";
-  lastName.value = "Babunga";
+  user.firstName = "Patrick";
+  user.lastName = "Babunga";
 };
 const user = reactive({
   firstName: "Arick",
@@ -24,7 +23,7 @@ const user = reactive({
   password: "",
 });
 let visible = ref(false);
-const fullName = computed(() => `${firstName.value} ${lastName.value}`);
+const fullName = computed(() => `${user.firstName} ${user.lastName}`);
 const toggle = () => {
   visible.value = !visible.value;
 };
@@ -37,11 +36,12 @@ onMounted(async () => {
 <template>
   <div>
     <Search @sendvalue="($event) => getValue($event)" />
-    <p>First Name: {{ firstName }}</p>
-    <p>Last Name: {{ lastName }}</p>
+    <p>First Name: {{ user.firstName }}</p>
+    <p>Last Name: {{ user.lastName }}</p>
     <p>Full Name: {{ fullName }}</p>
     <button class="btn btn-secondary" @click="toggle">Toggle</button>
     <button class="btn btn-secondary" @click="rename">Rename</button>
+    <FormComp />
     <ChildComp :user="user" />
     <ul>
       <template v-for="({ title, price, actif }, index) of fruits">

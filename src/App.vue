@@ -1,10 +1,10 @@
 <script setup>
-import UsersComp from "./components/UsersComp.vue";
+import HelloVue from "./components/HelloVue.vue";
 </script>
 
 <template>
   <h1 class="text-3xl font-bold">Welcome</h1>
-  <UsersComp />
+  <HelloVue />
 </template>
 
 <style scoped>
