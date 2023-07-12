@@ -4,6 +4,6 @@
   </div>
 </template>
 
-<script seup>
+<script setup>
 import Item from "../components/Item.vue";
 </script>

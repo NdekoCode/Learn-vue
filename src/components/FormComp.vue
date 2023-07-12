@@ -3,6 +3,7 @@ import { ref } from "vue";
 
 const sexe = ref("male");
 const province = ref("");
+const about = ref("");
 const jobs = ref([]);
 const radios = [
   {
@@ -54,7 +55,7 @@ const saveForm = () => {
         type="text"
         id="firstName"
         name="firstName"
-        class="px-2 py-2 border border-gray-300 rounded shadow"
+        class="px-2 py-2 transition-all border border-gray-300 rounded shadow input input-bordered"
       />
     </div>
     <div class="mb-3">
@@ -63,7 +64,7 @@ const saveForm = () => {
         type="text"
         id="lastName"
         name="lastName"
-        class="px-2 py-2 border border-gray-300 rounded shadow"
+        class="px-2 py-2 transition-all border border-gray-300 rounded shadow input input-bordered"
       />
     </div>
     <div class="mb-3">
@@ -73,6 +74,7 @@ const saveForm = () => {
         <label :for="item.label">{{ item.label }}</label>
         <input
           type="radio"
+          class="radio"
           name="sexe"
           v-model="sexe"
           :id="item.label"
@@ -88,6 +90,7 @@ const saveForm = () => {
         <label for="react">{{ item.label }}</label>
         <input
           type="checkbox"
+          class="checkbox"
           name="job"
           v-model="jobs"
           :id="item.label"
@@ -97,12 +100,28 @@ const saveForm = () => {
     </div>
     <div class="mb-3">
       <label for="province">Province</label>
-      <select name="province" id="province" v-model="province">
+      <select
+        class="select select-bordered"
+        name="province"
+        id="province"
+        v-model="province"
+      >
         <option value="" disabled selected>Select your province</option>
         <option v-for="option of options" :value="option.value">
           {{ option.label }}
         </option>
       </select>
+    </div>
+    <div class="mb-3">
+      <label for="about">Tell us something about you</label>
+      <textarea
+        name="about"
+        id="about"
+        class="w-full textared textarea-bordered textareaa-lg"
+        cols="30"
+        rows="10"
+        v-model="about"
+      ></textarea>
     </div>
     <button class="btn btn-secondary">Submit</button>
   </form>
