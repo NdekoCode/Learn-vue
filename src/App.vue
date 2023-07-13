@@ -1,6 +1,9 @@
 <script setup>
+import { ref } from "vue";
 import Layout from "./components/Layout.vue";
 import UsersComp from "./components/UsersComp.vue";
+const isActive = ref(false);
+const toggle = () => (isActive.value = !isActive.value);
 </script>
 
 <template>
@@ -27,6 +30,15 @@ import UsersComp from "./components/UsersComp.vue";
       </div>
     </template>
     <template v-slot:default>
+      <button class="mb-3 normal-case btn btn-outline" @click="toggle">
+        Toggle
+      </button>
+      <transition>
+        <div
+          class="block max-w-lg mb-3 rounded-lg min-h-[250px] min-w-[250px] bg-gray-400 mx-auto"
+          v-show="isActive"
+        ></div>
+      </transition>
       <UsersComp />
     </template>
     <template v-slot:footer>
@@ -84,6 +96,19 @@ header {
   margin: 0 auto 2rem;
 }
 
+.v-enter-from,
+.v-leave-active {
+  opacity: 0;
+  transform: translateY(-5px);
+}
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 0.35s, transform 0.35s;
+}
+.v-enter-to {
+  opacity: 1;
+  transform: translateY(0);
+}
 @media (min-width: 1024px) {
   header {
     display: flex;
