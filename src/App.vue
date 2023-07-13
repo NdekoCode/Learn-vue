@@ -26,6 +26,9 @@ import UsersComp from "./components/UsersComp.vue";
         </div>
       </div>
     </template>
+    <template v-slot:default>
+      <UsersComp />
+    </template>
     <template v-slot:footer>
       <div>
         <span class="footer-title">Services</span>
@@ -67,9 +70,6 @@ import UsersComp from "./components/UsersComp.vue";
           </div>
         </div>
       </div>
-    </template>
-    <template v-slot:main>
-      <UsersComp />
     </template>
   </Layout>
 </template>
