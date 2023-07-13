@@ -2,10 +2,9 @@
   <div class="flex items-center my-1">
     <input
       type="search"
-      @input="sendvalue"
       @keydown.enter="sendvalue"
       name="search"
-      class="p-2 my-1 border border-gray-300 rounded rounded-r-none shadow outline-none"
+      class="p-2 my-1 border border-gray-300 rounded rounded-r-none shadow outline-none input input-bordered"
       v-model.trim="input"
     />
     <button
