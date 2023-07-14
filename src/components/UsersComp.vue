@@ -11,10 +11,11 @@
       </transition>
       <Search @sendvalue="searchUser" :searchValue="searchValue" />
       <div class="flex flex-wrap gap-3 mt-5">
-        <transition-group>
+        <transition-group name="fade">
           <div
             class="flex flex-col p-3 rounded shadow-lg"
-            v-for="user in filteredUsers"
+            v-for="(user, index) in filteredUsers"
+            :key="index"
           >
             <h2>{{ user.name }}</h2>
             <p>
