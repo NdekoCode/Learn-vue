@@ -1,4 +1,5 @@
 import { api, NotFoundError } from "@/helpers/api";
+import { AxiosError } from "axios";
 import { reactive, toRefs } from "vue";
 // import { ref } from "vue"; // On va utiliser "reactive" à la place
 
@@ -14,6 +15,7 @@ const useFetch = (url) => {
       state.loading = true;
       state.data = await api(url);
     } catch (e) {
+      state.loading = false;
       if (e instanceof AxiosError || e instanceof NotFoundError) {
         state.error = "L'utilisateur n'existe pas";
       } else {

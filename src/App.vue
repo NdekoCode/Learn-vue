@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from "vue";
 import Layout from "./components/Layout.vue";
+import Modal from "./components/Modal.vue";
 import UsersComp from "./components/UsersComp.vue";
 const isActive = ref(false);
 const toggle = () => (isActive.value = !isActive.value);
@@ -30,15 +31,7 @@ const toggle = () => (isActive.value = !isActive.value);
       </div>
     </template>
     <template v-slot:default>
-      <button class="mb-3 normal-case btn btn-outline" @click="toggle">
-        Toggle
-      </button>
-      <transition>
-        <div
-          class="block max-w-lg mb-3 rounded-lg min-h-[250px] min-w-[250px] bg-gray-400 mx-auto"
-          v-show="isActive"
-        ></div>
-      </transition>
+      <Modal />
       <UsersComp />
     </template>
     <template v-slot:footer>
