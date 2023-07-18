@@ -15,10 +15,10 @@ import { ref } from 'vue';
     </div>
   </form>
   <transition-group tag="ul" name="todo">
-    <li v-for="(todo, index) of todos" :key="todo">
-      {{ todo.title }}
+    <li v-for="{ title, id } of todos" :key="id">
+      {{ title }}
       <span
-        @click="() => removeTodo(todo)"
+        @click="() => removeTodo(id)"
         class="p-1 text-white bg-red-500 cursor-pointer"
         >X</span
       >
@@ -66,10 +66,10 @@ const todos = ref([
     done: true,
   },
 ]);
-const removeTodo = (todo) => {
-  const t = todos.value.indexOf(todo);
-  if (t) {
-    todos.value.splice(t, 1);
+const removeTodo = (id) => {
+  const index = todos.value.findIndex((t) => id == t.id);
+  if (index > -1) {
+    todos.value.splice(index, 1);
   }
 };
 </script>
