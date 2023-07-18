@@ -14,6 +14,12 @@ import { ref } from 'vue';
       <button class="join-item btn btn-outline">Add todo</button>
     </div>
   </form>
+  <button class="btn btn-outlinte" @click.prevent="() => changeShow('compter')">
+    Compter
+  </button>
+  <button class="btn btn-outlinte" @click.prevent="() => changeShow('modal')">
+    Modal
+  </button>
   <transition-group tag="ul" name="todo">
     <li v-for="{ title, id } of todos" :key="id">
       {{ title }}
@@ -24,11 +30,19 @@ import { ref } from 'vue';
       >
     </li>
   </transition-group>
+  <keep-alive :max="0">
+    <increment-comp v-if="show === 'compter'"></increment-comp>
+    <modal v-else />
+  </keep-alive>
 </template>
 
 <script setup>
 import { ref } from "vue";
+import IncrementComp from "./IncrementComp.vue";
+import Modal from "./Modal.vue";
 const newTodo = ref("");
+const show = ref("");
+const changeShow = (value) => (show.value = value);
 const addNewTodo = () => {
   if (newTodo.value.trim().length > 1) {
     todos.value.push({

@@ -19,10 +19,17 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { onMounted, onUnmounted, ref } from "vue";
 
 const isActive = ref(false);
 const toggle = () => (isActive.value = !isActive.value);
+
+onMounted(() => {
+  console.log("Modal mounted");
+});
+onUnmounted(() => {
+  console.log("Modal disable");
+});
 </script>
 
 <style lang="scss" scoped>
