@@ -1,10 +1,7 @@
 <script setup>
-import { ref } from "vue";
 import Layout from "./components/Layout.vue";
-import Modal from "./components/Modal.vue";
+import Todo from "./components/Todo.vue";
 import UsersComp from "./components/UsersComp.vue";
-const isActive = ref(false);
-const toggle = () => (isActive.value = !isActive.value);
 </script>
 
 <template>
@@ -31,7 +28,7 @@ const toggle = () => (isActive.value = !isActive.value);
       </div>
     </template>
     <template v-slot:default>
-      <Modal />
+      <Todo />
       <UsersComp />
     </template>
     <template v-slot:footer>
