@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { computed, onMounted, reactive, ref } from "vue";
-import ChildComp from "./ChildComp.vue";
 import FormComp from "./FormComp.vue";
 import Search from "./Search.vue";
 const fruits = ref([
@@ -42,7 +41,6 @@ onMounted(async () => {
     <button class="btn btn-secondary" @click="toggle">Toggle</button>
     <button class="btn btn-secondary" @click="rename">Rename</button>
     <FormComp />
-    <ChildComp :user="user" />
     <ul>
       <template v-for="({ title, price, actif }, index) of fruits">
         <li v-if="actif">{{ title }}: {{ price }}</li></template

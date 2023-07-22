@@ -112,14 +112,15 @@ const saveForm = () => {
         </option>
       </select>
     </div>
-    <div class="mb-3">
-      <label for="about">Tell us something about you</label>
+    <div class="p-1 mb-3">
+      <label for="about" class="mb-3">Tell us something about you</label>
       <textarea
         name="about"
         id="about"
-        class="w-full textared textarea-bordered textareaa-lg"
-        cols="30"
-        rows="10"
+        placeholder="Tell us something about you"
+        class="w-full p-3 border border-gray-100 rounded-md outline-none textared textarea-bordered"
+        cols="5"
+        rows="5"
         v-model="about"
       ></textarea>
     </div>

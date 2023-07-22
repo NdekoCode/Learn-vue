@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from "vue";
 import Layout from "./components/Layout.vue";
+import MouseComp from "./components/MouseComp.vue";
 import Todo from "./components/Todo.vue";
 import UsersComp from "./components/UsersComp.vue";
 const timer = ref(null);
@@ -58,6 +59,7 @@ const vNdeko = (el, binding) => {
       </div>
     </template>
     <template v-slot:default>
+      <mouse-comp></mouse-comp>
       <Todo />
       <div class="bg-green-600 w-36 h-36" v-ndeko.bold="'Bum'"></div>
       <Suspense>
