@@ -23,6 +23,7 @@ import { ref } from 'vue';
   <transition-group tag="ul" name="todo">
     <li v-for="{ title, id } of todos" :key="id">
       {{ title }}
+
       <span
         @click="() => removeTodo(id)"
         class="p-1 text-white bg-red-500 cursor-pointer"
@@ -30,9 +31,11 @@ import { ref } from 'vue';
       >
     </li>
   </transition-group>
-  <keep-alive :max="0">
-    <increment-comp v-if="show === 'compter'"></increment-comp>
-    <modal v-else />
+  <keep-alive max="3"
+    ><modal v-if="show === 'modal'" />
+    <teleport to="body" v-else>
+      <increment-comp></increment-comp>
+    </teleport>
   </keep-alive>
 </template>
 
