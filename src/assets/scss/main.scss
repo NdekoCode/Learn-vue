@@ -1,11 +1,16 @@
 @import "./base.scss";
 
 .btn {
-  @apply p-2 px-3 bg-gray-300 rounded;
 
+
+  @apply normal-case font-normal;
 
   &.btn-secondary {
     @apply bg-gray-900 text-white;
+  }
+
+  &.btn-danger {
+    @apply bg-red-700 text-white;
   }
 }
 
@@ -20,8 +25,4 @@
     @apply bg-green-200 text-green-500 border-green-400;
   }
 
-}
-
-.btn {
-  @apply normal-case font-normal
 }

@@ -31,7 +31,7 @@
               aria-hidden="true"
               v-if="loading === user.id"
             ></span>
-            <span class="sr-only">Supprimer</span>
+            <span>Supprimer</span>
           </button>
         </div>
       </article>
@@ -40,10 +40,14 @@
 </template>
 
 <script setup>
+import axios from "axios";
+import { onMounted, reactive, ref } from "vue";
+import { onBeforeRouteLeave, onBeforeRouteUpdate } from "vue-router";
+
 // Protection des composants, utile si vous voulez faire un appel ajax avant que la page ne s'affiche et l'afficher uniquement quant la requete AJAX est terminer.
 // A eviter si votre composant à des props
 // similaire à beforeEnteer des routes
-beforeRouteEnter((route, redirect, next) => {
+onBeforeRouteUpdate((route, redirect, next) => {
   const confirm = window.confirm("Etes-vous déjà connecter ?");
   if (confirm) {
     next();
@@ -52,7 +56,7 @@ beforeRouteEnter((route, redirect, next) => {
   }
 });
 
-beforeRouteLeave((route, redirect, next) => {
+onBeforeRouteLeave((route, redirect, next) => {
   const confirm = window.confirm("Voulez-vous vraiment quitter ?");
   if (confirm) {
     next();

@@ -1,38 +1,5 @@
 <script setup>
-import { ref } from "vue";
 import Layout from "./components/Layout.vue";
-import MouseComp from "./components/MouseComp.vue";
-import Todo from "./components/Todo.vue";
-import UsersComp from "./components/UsersComp.vue";
-const timer = ref(null);
-const vArick = {
-  created: (el, binding) => {
-    console.log(el, binding);
-  },
-  mounted(el, binding) {
-    const colors = ["red", "yellow", "green", "pink", "blue"];
-    timer.value = setInterval(() => {
-      el.style.backgroundColor =
-        colors[parseInt(Math.random() * colors.length - 1)];
-    }, 1000);
-  },
-  unmounted() {
-    clearInterval(timer.value);
-  },
-};
-const vNdeko = (el, binding) => {
-  console.log(binding, binding.value);
-  const { modifiers } = binding;
-  if (modifiers.bold) {
-    el.style.fontWeight = "bold";
-  }
-  if (modifiers.italic) {
-    el.style.fontStyle = "italic";
-  }
-  el.innerHTML = binding.value;
-
-  const timer = ref(null);
-};
 </script>
 
 <template>
@@ -40,17 +7,29 @@ const vNdeko = (el, binding) => {
     <template v-slot:header>
       <div class="navbar bg-base-100">
         <div class="flex-1">
-          <a class="text-xl normal-case btn btn-ghost">LearnVue</a>
+          <router-link
+            :to="{ name: 'home' }"
+            class="text-xl normal-case btn btn-ghost"
+            >LearnVue</router-link
+          >
         </div>
         <div class="flex-none">
-          <ul class="px-1 menu menu-horizontal">
-            <li><a class="font-bold">Welcome</a></li>
+          <ul class="z-10 px-1 menu menu-horizontal">
+            <li>
+              <router-link class="font-bold" :to="{ name: 'home' }"
+                >Welcome</router-link
+              >
+            </li>
             <li>
               <details>
-                <summary>Parent</summary>
+                <summary>Sublink</summary>
                 <ul class="p-2 bg-base-100">
-                  <li><a>Link 1</a></li>
-                  <li><a>Link 2</a></li>
+                  <li>
+                    <router-link :to="{ name: 'blog' }">Blog</router-link>
+                  </li>
+                  <li>
+                    <router-link :to="{ name: 'users' }">users</router-link>
+                  </li>
                 </ul>
               </details>
             </li>
@@ -59,13 +38,7 @@ const vNdeko = (el, binding) => {
       </div>
     </template>
     <template v-slot:default>
-      <mouse-comp></mouse-comp>
-      <Todo />
-      <div class="bg-green-600 w-36 h-36" v-ndeko.bold="'Bum'"></div>
-      <Suspense>
-        <template #fallback> Loading... </template>
-        <UsersComp />
-      </Suspense>
+      <router-view />
     </template>
     <template v-slot:footer>
       <div>
