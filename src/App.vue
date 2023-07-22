@@ -1,5 +1,6 @@
 <script setup>
 import Layout from "./components/Layout.vue";
+import { HOME_ROUTES } from "./router/routes";
 </script>
 
 <template>
@@ -24,11 +25,10 @@ import Layout from "./components/Layout.vue";
               <details>
                 <summary>Sublink</summary>
                 <ul class="p-2 bg-base-100">
-                  <li>
-                    <router-link :to="{ name: 'blog' }">Blog</router-link>
-                  </li>
-                  <li>
-                    <router-link :to="{ name: 'users' }">users</router-link>
+                  <li v-for="{ path, title } of HOME_ROUTES">
+                    <router-link :to="path" active-class="active">{{
+                      title
+                    }}</router-link>
                   </li>
                 </ul>
               </details>
