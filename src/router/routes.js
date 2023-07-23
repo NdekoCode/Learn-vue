@@ -1,8 +1,29 @@
 import page404 from "@/pages/page404.vue";
 import Blog from "../pages/Blog.vue";
 import Home from "../pages/Home.vue";
+import Login from "../pages/Login.vue";
 import Users from "../pages/Users.vue";
 const routes = [
+  {
+    path: "/login",
+    component: Login,
+    name: "login",
+    meta: {
+      layout: "user-layout",
+    },
+  },
+  {
+    path: "/logout",
+    name: "logout",
+    beforeEnter: [
+      (to, from, next) => {
+        localStorage.removeItem("token");
+        next({
+          name: "login",
+        });
+      },
+    ],
+  },
   {
     path: "/",
     name: "home",
@@ -37,6 +58,17 @@ const routes = [
     meta: {
       layout: "simple-layout",
     },
+    beforeEnter: [
+      (to, from, next) => {
+        const response = confirm(
+          "Voulez-vous vraiment acceder à cette route ?"
+        );
+        if (response) {
+          next();
+        } else {
+        }
+      },
+    ],
   },
   {
     path: "/:pathMatch(.*)*",
@@ -63,6 +95,12 @@ export const HOME_ROUTES = [
       name: "users",
     },
     title: "Users",
+  },
+  {
+    path: {
+      name: "logout",
+    },
+    title: "Logout",
   },
 ];
 export default routes;
