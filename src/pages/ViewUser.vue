@@ -16,7 +16,7 @@
 import { onMounted, ref } from "vue";
 const { id } = defineProps({
   id: {
-    type: Number,
+    type: String,
   },
 });
 const userId = ref(id || null);

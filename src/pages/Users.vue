@@ -98,7 +98,6 @@ onMounted(() => {
   instance
     .get("users")
     .then(({ data }) => {
-      console.log(data);
       users.value = data;
     })
     .catch((err) => {

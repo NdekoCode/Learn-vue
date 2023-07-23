@@ -7,22 +7,36 @@ const routes = [
     path: "/",
     name: "home",
     component: Home,
+    meta: {
+      layout: "default-layout",
+    },
   },
   {
     path: "/users",
-    name: "users",
-    component: Users,
-  },
-  {
-    path: "/users/:id(\\d+)",
-    name: "users.show",
-    props: true,
-    component: () => import("@/pages/ViewUser.vue"),
+    meta: {
+      layout: "user-layout",
+    },
+    children: [
+      {
+        path: "",
+        name: "users",
+        component: Users,
+      },
+      {
+        path: ":id(\\d+)",
+        name: "users.show",
+        props: true,
+        component: () => import("@/pages/ViewUser.vue"),
+      },
+    ],
   },
   {
     path: "/blog",
     name: "blog",
     component: Blog,
+    meta: {
+      layout: "simple-layout",
+    },
   },
   {
     path: "/:pathMatch(.*)*",

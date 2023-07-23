@@ -1,6 +1,20 @@
 <script setup>
+import { ref, watch } from "vue";
+import { useRoute } from "vue-router";
 import Layout from "./components/Layout.vue";
 import { HOME_ROUTES } from "./router/routes";
+const layout = ref("default-layout");
+const route = useRoute();
+console.log(layout, route.meta);
+watch(
+  () => route.meta?.layout,
+  (value) => {
+    layout.value = value ?? "default-layout";
+  },
+  {
+    immediate: true,
+  }
+);
 </script>
 
 <template>
@@ -38,7 +52,7 @@ import { HOME_ROUTES } from "./router/routes";
       </div>
     </template>
     <template v-slot:default>
-      <router-view />
+      <component :is="layout" />
     </template>
     <template v-slot:footer>
       <div>
