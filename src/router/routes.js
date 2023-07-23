@@ -10,6 +10,7 @@ const routes = [
     name: "login",
     meta: {
       layout: "user-layout",
+      middleware: "auth",
     },
   },
   {
@@ -30,6 +31,7 @@ const routes = [
     component: Home,
     meta: {
       layout: "default-layout",
+      middleware: "auth",
     },
   },
   {
