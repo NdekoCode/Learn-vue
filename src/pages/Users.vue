@@ -2,7 +2,7 @@
   <div>
     <section class="row">
       <article
-        class="gap-1 mb-3 shadow card col-md-4"
+        class="relative gap-1 mb-3 shadow card col-md-4"
         v-for="user in users"
         :key="user.id"
       >
@@ -34,6 +34,10 @@
             <span>Supprimer</span>
           </button>
         </div>
+        <router-link
+          class="absolute inset-0 opacity-0"
+          :to="{ name: 'users.show', params: { id: user.id } }"
+        ></router-link>
       </article>
     </section>
   </div>
@@ -42,20 +46,11 @@
 <script setup>
 import axios from "axios";
 import { onMounted, reactive, ref } from "vue";
-import { onBeforeRouteLeave, onBeforeRouteUpdate } from "vue-router";
+import { onBeforeRouteLeave } from "vue-router";
 
 // Protection des composants, utile si vous voulez faire un appel ajax avant que la page ne s'affiche et l'afficher uniquement quant la requete AJAX est terminer.
 // A eviter si votre composant à des props
 // similaire à beforeEnteer des routes
-onBeforeRouteUpdate((route, redirect, next) => {
-  const confirm = window.confirm("Etes-vous déjà connecter ?");
-  if (confirm) {
-    next();
-  } else {
-    console.log(route, redirect);
-  }
-});
-
 onBeforeRouteLeave((route, redirect, next) => {
   const confirm = window.confirm("Voulez-vous vraiment quitter ?");
   if (confirm) {
