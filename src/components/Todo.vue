@@ -20,7 +20,7 @@ import { ref } from 'vue';
   <button class="btn btn-outlinte" @click.prevent="() => changeShow('modal')">
     Modal
   </button>
-  <transition-group tag="ul" name="todo">
+  <transition-group tag="ul" name="todo" mode="outin">
     <li v-for="{ title, id } of todos" :key="id">
       {{ title }}
 
